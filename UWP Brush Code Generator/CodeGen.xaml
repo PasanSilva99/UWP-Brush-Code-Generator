@@ -1,0 +1,45 @@
+﻿<Page
+    x:Class="UWP_Brush_Code_Generator.CodeGen"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UWP_Brush_Code_Generator"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource SystemControlAcrylicWindowBrush}">
+
+    <Grid>
+        <ScrollViewer HorizontalAlignment="Left" Width="250" Loaded="ScrollViewer_Loaded" Height="960" VerticalAlignment="Top">
+            <StackPanel x:Name="scrl_Preset"/>
+        </ScrollViewer>
+        <Rectangle x:Name="rect_colorView" Height="485" Margin="344,92,405,0" Stroke="Black" VerticalAlignment="Top"/>
+        <ColorPicker Loaded="colorPicker_Loaded" ColorChanged="colorPicker_ColorChanged" x:Name="colorPicker" Color="{ThemeResource SystemAccentColor}" HorizontalAlignment="Right" Margin="0,46,35,0" VerticalAlignment="Top"/>
+        <Slider Loaded="scrl_tint_Loaded" ValueChanged="scrl_tint_ValueChanged" x:Name="scrl_tint" Header="Tint Opacity" Margin="383,750,444,0" VerticalAlignment="Top" Height="70" LargeChange="0" Maximum="1" SmallChange="0.1" StepFrequency="0.1" Value="0.9"/>
+        <Slider Loaded="scrl_lum_Loaded" ValueChanged="scrl_lum_ValueChanged" x:Name="scrl_lum" Header="Tint Luminousity Opacity" Margin="383,825,444,0" VerticalAlignment="Top" Height="70" LargeChange="0.2" Maximum="1" SmallChange="0.1" StepFrequency="0.1" Value="0.6"/>
+        <ComboBox Loaded="combo_brushType_Loaded" SelectionChanged="combo_brushType_SelectionChanged" x:Name="combo_brushType" Header="Brush Type" Margin="383,610,444,0" HorizontalAlignment="Stretch">
+            <ComboBox.Items>
+                <ComboBoxItem IsSelected="True" Content="Acrylic Brush" />
+                <ComboBoxItem Content="Solid Color Brush" />
+            </ComboBox.Items>
+        </ComboBox>
+        <ComboBox Loaded="combo_backSource_Loaded" SelectionChanged="combo_backSource_SelectionChanged" x:Name="combo_backSource" Header="Background Source" Margin="383,680,444,0" HorizontalAlignment="Stretch">
+            <ComboBox.Items>
+                <ComboBoxItem IsSelected="True" Content="Host Backdrop" />
+                <ComboBoxItem Content="Backdrop" />
+            </ComboBox.Items>
+        </ComboBox>
+        <TextBox Loaded="tb_codeView_Loaded" x:Name="tb_codeView" HorizontalAlignment="Right" Margin="0,650,35,32" Text="Your Code will Generate here" TextWrapping="Wrap" Width="312" IsReadOnly="True"/>
+        <ComboBox Loaded="combo_Lang_Loaded" SelectionChanged="combo_Lang_SelectionChanged" x:Name="combo_Lang" Header="Language" Margin="0,583,35,0" HorizontalAlignment="Right" Width="312">
+            <ComboBoxItem IsSelected="True" Content="XAML" />
+            <ComboBoxItem Content="C#" />
+        </ComboBox>
+        <TextBox TextChanged="tb_key_TextChanged" x:Name="tb_key" Header="Name (C#)"  Margin="383,900,444,0" PlaceholderText="Enter the Variable Name if you need to add" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Button x:Name="btn_copy" Margin="0,0,35,32" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="61" Height="50" Click="btn_copy_Click">
+            <SymbolIcon Symbol="Copy"/>
+        </Button>
+        <Button x:Name="Reload" Margin="189,2,0,0" VerticalAlignment="Top" Click="Reload_Click" Width="61" Height="50">
+            <SymbolIcon Symbol="Refresh"/>
+        </Button>
+
+    </Grid>
+</Page>
